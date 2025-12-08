@@ -57,6 +57,18 @@ Or if using `pyproject.toml`:
 pip install .
 ```
 
+If using `uv`, create a virtual environment:
+
+```bash
+uv venv
+```
+
+And then install dependencies:
+
+```bash
+uv pip install .
+```
+
 ---
 
 ## 🧪 Running Tests
@@ -65,6 +77,12 @@ Run all tests with:
 
 ```bash
 pytest
+```
+
+Or, if using `uv`:
+
+```bash
+uv run pytest
 ```
 
 ---

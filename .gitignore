@@ -1,5 +1,12 @@
+# python
 .venv/
 __pycache__/
 .pytest_cache/
 
+# environment
 .env
+
+# uv
+*.egg-info/
+build/
+uv.lock

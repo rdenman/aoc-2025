@@ -18,20 +18,16 @@ def part2(lines):
     count = 0
     pos = 50
     for line in lines:
+        distance = int(line[1:])
         if line.startswith("L"):
-            pos = pos - int(line[1:])
+            if pos == 0:
+                count += distance // 100
+            elif distance >= pos:
+                count += (distance - pos) // 100 + 1
+            pos = (pos - distance) % 100
         elif line.startswith("R"):
-            pos = pos + int(line[1:])
-        if pos == 0:
-            count += 1
-        elif pos > 99:
-            while pos > 99:
-                pos -= 100
-                count += 1
-        elif pos < 0:
-            while pos < 0:
-                pos += 100
-                count += 1
+            count += (pos + distance) // 100
+            pos = (pos + distance) % 100
     return count
 
 
