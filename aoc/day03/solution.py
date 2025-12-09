@@ -16,7 +16,24 @@ def part1(lines):
 
 
 def part2(lines):
-    pass
+    sum = 0
+    for line in lines:
+        positions = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
+        for pos in range(len(positions)):
+            start = 0 if pos == 0 else positions[pos - 1] + 1
+            positions[pos] = start
+            for i in range(
+                start,
+                len(line) - len(positions) + pos + 1,
+            ):
+                if int(line[positions[pos]]) < int(line[i]):
+                    positions[pos] = i
+
+        num = ""
+        for pos in positions:
+            num += line[pos]
+        sum += int(num)
+    return sum
 
 
 if __name__ == "__main__":
