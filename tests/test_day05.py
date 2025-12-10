@@ -20,4 +20,4 @@ def test_part1():
 
 
 def test_part2():
-    assert part2(EXAMPLE.splitlines()) == None
+    assert part2(EXAMPLE.splitlines()) == 14

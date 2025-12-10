@@ -27,7 +27,25 @@ def part1(lines):
 
 
 def part2(lines):
-    pass
+    strRanges = parse_input(lines)[0]
+    ranges = []
+    for r in strRanges:
+        start, end = r.split("-")
+        ranges.append([int(start), int(end)])
+
+    ranges = sorted(ranges, key=lambda x: x[0])
+
+    merged = []
+    for start, end in ranges:
+        if not merged or merged[-1][1] < start:
+            merged.append([start, end])
+        else:
+            merged[-1][1] = max(merged[-1][1], end)
+
+    sum = 0
+    for start, end in merged:
+        sum += end - start + 1
+    return sum
 
 
 if __name__ == "__main__":
