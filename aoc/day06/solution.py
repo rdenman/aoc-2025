@@ -31,7 +31,34 @@ def part1(lines):
 
 
 def part2(lines):
-    pass
+    columns = list(zip(*lines))
+
+    problems = []
+    current = []
+    for column in columns:
+        if all(ch == " " for ch in column):
+            if current:
+                problems.append(current)
+                current = []
+        else:
+            current.append(column)
+
+    if current:
+        problems.append(current)
+
+    sum = 0
+
+    for problem in reversed(problems):
+        operator = problem[0][::-1][0]
+        numbers = []
+        for row in problem:
+            digits = "".join(ch for ch in row if ch.isdigit())
+            if digits:
+                numbers.append(int(digits))
+
+        sum += op(operator, numbers)
+
+    return sum
 
 
 if __name__ == "__main__":
