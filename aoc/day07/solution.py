@@ -32,8 +32,28 @@ def part1(lines):
     return count
 
 
-def part2(lines):
-    pass
+def part2(lines: list[str]):
+    cols = len(lines[0])
+    rows = len(lines)
+    start_col = lines[0].index("S")
+
+    dp = [[0] * cols for _ in range(rows + 1)]
+
+    dp[1][start_col] = 1
+
+    for r in range(1, rows):
+        for c in range(cols):
+            if dp[r][c] == 0:
+                continue
+            if lines[r][c] == "^":
+                if c - 1 >= 0:
+                    dp[r + 1][c - 1] += dp[r][c]
+                if c + 1 < cols:
+                    dp[r + 1][c + 1] += dp[r][c]
+            else:
+                dp[r + 1][c] += dp[r][c]
+
+    return sum(dp[rows])
 
 
 if __name__ == "__main__":
