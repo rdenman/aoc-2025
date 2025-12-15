@@ -23,15 +23,15 @@ The goal is to keep each day self-contained while sharing helpers via `aoc/utils
 Use the included command:
 
 ```bash
-python run.py <day>
+uv run run.py <day>
 ```
 
 Examples:
 
 ```bash
-python run.py 1
-python run.py 01
-python run.py 10
+uv run run.py 1
+uv run run.py 01
+uv run run.py 10
 ```
 
 This automatically:
@@ -100,10 +100,18 @@ AOC_SESSION=your_session_cookie_here
 2. Run:
 
 ```bash
-python scripts/download_input.py <day>
+uv run scripts/download_input.py <day>
 ```
 
 This saves the input into `aoc/dayXX/input.txt`.
+
+## 📥 (Optional) Auto-Create Day Template
+
+If you want to auto-create a day template, with the solution file & associated test, run:
+
+```bash
+uv run scripts/create-day.py <day>
+```
 
 ---
 
